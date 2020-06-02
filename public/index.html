@@ -1,76 +1,184 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>2020 Protests</title>
-    <style>
-      h1,
-      h2,
-      h5,
-      a,
-      p {
-          color: #FFFFFF;
-          font-family: Arial, Helvetica, sans-serif;
-          font-weight: bold;
-      }
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-      body {
-          background-color: #212529;
-      }
+  <title>Washington BLM Protests 2020</title>
 
-      .card {
-          border: none;
-      }
+  <style>
+    h1,
+    h2,
+    h5,
+    a,
+    p {
+      color: #FFFFFF;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    body {
+      background-color: #212529;
+    }
+
+    .navbar-nav>li {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   </style>
-  </head>
-  <nav class="navbar fixed-top navbar-expand-lg" style="background-color: black;">
-    <a class="navbar-brand" href="/data">
-      <span style="color: white"><img src="/public/blmfistoutline.png" style="width: 25px;" alt=""> 2020Protests.com</span>
-    </a>
-  
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/data">Data <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/map">Map</a>
-        </li>
-  
-        <li class="nav-item">
-          <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/wiki">Wiki</a>
-        </li>
-      </ul>
+</head>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: rgb(15, 15, 15);">
+  <span style="color: white"><img src="/blmfistoutline.png" style="width: 25px;" alt=""></span>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link"
+          href="/home.html">2020Protests.com</a>
+      </li>
+      <li class="nav-item active">
+        <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/safety.html">Protest
+          Safety</a>
+      </li>
+      <li class="nav-item active">
+        <a style="color: white; font-size: 20px; font-weight: bolder;" class="nav-link" href="/team.html">Our Team</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8" style="padding-top: 100px;">
+        <div class="card" style="width: inherit; background-color: transparent;">
+          <div class="card-body" style="background-color: #2B2E32; border-radius: 15px;">
+            <h5 class="card-title" style="color: #ffcc00; font-size: 30px; text-align: center;">Find Your State</h5>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-4">
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Alabama.html">Alabama</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Alaska.html">Alaska</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Arizona.html">Arizona</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Arkansas.html">Arkansas</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/California.html">California</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Colorado.html">Colorado</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Connecticut.html">Connecticut</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Delaware.html">Delaware</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Florida.html">Florida</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Georgia.html">Georgia</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Hawaii.html">Hawaii</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Idaho.html">Idaho</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Illinois.html">Illinois</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Indiana.html">Indiana</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Iowa.html">Iowa</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Kansas.html">Kansas</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Kentucky.html">Kentucky</a></p>
+                </div>
+                <div class="col-4">
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Louisiana.html">Louisiana</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Maine.html">Maine</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Maryland.html">Maryland</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Massachusetts.html">Massachusetts</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Michigan.html">Michigan</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Minnesota.html">Minnesota</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Mississippi.html">Mississippi</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Missouri.html">Missouri</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Montana.html">Montana</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Nebraska.html">Nebraska</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Nevada.html">Nevada</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/New_Hampshire.html">New Hampshire</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/New_Jersey.html">New Jersey</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/New_Mexico.html">New Mexico</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/New_York.html">New York</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/North_Carolina.html">North Carolina</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/North_Dakota.html">North Dakota</a></p>
+                </div>
+                <div class="col-4">
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Ohio.html">Ohio</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Oklahoma.html">Oklahoma</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Oregon.html">Oregon</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Pennsylvania.html">Pennsylvania</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Rhode_Island.html">Rhode Island</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/South_Carolina.html">South Carolina</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/South_Dakota.html">South Dakota</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Tennessee.html">Tennessee</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Texas.html">Texas</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Utah.html">Utah</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Vermont.html">Vermont</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Virginia.html">Virginia</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Washington.html">Washington</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Washington_DC.html">Washington DC</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/West_Virginia.html">West Virginia</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/South_Dakota.html">Wisconsin</a></p>
+                  <p style="color: #ffcc00; background-color: #212529; border-radius: 15px; text-align: center;" class="card-text"><a href="/Wyoming.html">Wyoming</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" style="padding-top: 100px;">
+        <div class="card" style="width: inherit; background-color: transparent; padding-bottom: 25px;">
+          <div class="card-body" style="background-color: #2B2E32; border-radius: 15px;">
+            <h5 class="card-title" style="color: #ffcc00; font-size: 25px; text-align: center;">Updates</h5>
+            <p style="color: white;border-radius: 15px; text-align: center;" class="card-text">Email us at blmprotestwebsite@gmail.com
+              to help keep us up-to-date</p>
+          </div>
+        </div>
+        <div class="card" style="width: inherit; background-color: transparent; padding-bottom: 25px;">
+          <div class="card-body" style="background-color: #2B2E32; border-radius: 15px;">
+            <h5 class="card-title" style="color: #ffcc00; font-size: 25px; text-align: center;">Act Now</h5>
+            <p style="color: white;border-radius: 15px; text-align: center;" class="card-text">Text “FLOYD” to 55156</p>
+            <p style="color: white;border-radius: 15px; text-align: center;" class="card-text">Text “JUSTICE” to 668366</p>
+            <p style="color: white;border-radius: 15px; text-align: center;" class="card-text">Text “RESIST” to 50409</p>
+            <p style="color: white;border-radius: 15px; text-align: center;" class="card-text">Text “ENOUGH” to 55156</p>
+
+          </div>
+        </div>
+        <div class="card" style="width: inherit; background-color: transparent;">
+          <div class="card-body" style="background-color: #2B2E32; border-radius: 15px;">
+            <h5 class="card-title" style="color: #ffcc00; font-size: 25px; text-align: center;">Map of US protests</h5>
+            <div class="container-fluid">
+              <style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="BLM Mvmt Visualization-Red-Copy" src="//shanefan1.maps.arcgis.com/apps/Embed/index.html?webmap=428f1c80d25d428085401c47b11468b1&extent=-175.2294,1.3759,16.3722,68.3881&zoom=true&previewImage=false&scale=false&disable_scroll=true&theme=dark"></iframe></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
-  
-  <body>
-    
-    <h1 style="font-size: 100px; color: #ffcc00; padding: 50px">2020 BLM Protests</h1>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.14.6/firebase-app.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.14.6/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
-  </body>
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+</body>
+
 </html>
