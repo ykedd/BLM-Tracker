@@ -30,104 +30,114 @@ protests.pages = {
 var args = process.argv.splice(2);
 var task = args[0];
 
-var build_pages = function() {
-	return new Promise(async (resolve,reject) => {
-		console.log(col.red('Deleting: dist/**'));
-	    const deletedPaths = await del(['dist']); // DELETE EVERYTHING INSIDE OF THE DIST FOLDER DON'T PLAY AROUND WITH THIS IT CAN WIPE YOUR OS!!
+(async () => {
+	await new Promise(cb => {
+		figlet('2020protests',(err, data) => {
+			console.log(data);
+			console.log('Avi Schiffmann - Daniel Conlon - And others\n');
+			cb();
+		});
+	});
 
-	    if (!fs.existsSync('dist/')) {
-	        fs.mkdirSync('dist');
-	        fs.mkdirSync('dist/assets');
-	    }
+	var build_pages = function() {
+		return new Promise(async (resolve,reject) => {
+			console.log(col.red('Deleting: dist/**'));
+		    const deletedPaths = await del(['dist']); // DELETE EVERYTHING INSIDE OF THE DIST FOLDER DON'T PLAY AROUND WITH THIS IT CAN WIPE YOUR OS!!
 
-	    var files = glob.sync('src/*');
-	    files.forEach((v) => {
-	    	var finalDir = v.split('/');
-	    	finalDir.shift();
-	    	finalDir = finalDir.join('/');
+		    if (!fs.existsSync('dist/')) {
+		        fs.mkdirSync('dist');
+		        fs.mkdirSync('dist/assets');
+		    }
 
-	    	var dirs = finalDir.split('/');
-			var dirstr = '';
+		    var files = glob.sync('src/*');
+		    files.forEach((v) => {
+		    	var finalDir = v.split('/');
+		    	finalDir.shift();
+		    	finalDir = finalDir.join('/');
 
-			for(var i in dirs){
-				dirstr += dirs[i]+'/';
-				if(!fs.existsSync('dist/assets/'+dirstr)){
-				    fs.mkdirSync('dist/assets/'+dirstr);
-				}
-			}
-
-			console.log(col.green(`Copying`),col.yellowBright(v));
-	    	copydir.sync(v,'dist/assets/'+finalDir);
-	    });
-
-	    for(var i in protests){
-	    	var region = protests[i];
-
-	    	for(var o in region.locations){
-	    		var loc = region.locations[o];
-
-	    		var path = (loc.path != null?loc.path:region.country_code+'/'+o)
-
-		        var dirs = path.split('/');
+		    	var dirs = finalDir.split('/');
 				var dirstr = '';
 
 				for(var i in dirs){
 					dirstr += dirs[i]+'/';
-					if(dirstr && !fs.existsSync('dist/'+dirstr)){
-					    fs.mkdirSync('dist/'+dirstr);
+					if(!fs.existsSync('dist/assets/'+dirstr)){
+					    fs.mkdirSync('dist/assets/'+dirstr);
 					}
 				}
 
-				((path,loc)=>{
-					console.log(col.green("Building page:"),col.yellowBright('/'+path));
-				    var str = ejs.renderFile('./src/templates/'+loc.template,{
-				    	data: {
-					        ...loc
-					    }
-				    },function(err,str){
-				    	if(err){
-				    		error = err;
-				    		console.log(col.bgRed('Fatal Error'));
-				    		console.log(col.red(err));
-				    	}
-				    	fs.writeFileSync('dist/'+path+'/index.html',str);
-				    });
-				})(path,loc);
-	    	};
-	    };
+				console.log(col.green(`Copying`),col.yellowBright(v));
+		    	copydir.sync(v,'dist/assets/'+finalDir);
+		    });
 
-		// var error = '';
-		// protests.forEach(async (v, i) => {
-		// 	if(error)return;
+		    for(var i in protests){
+		    	var region = protests[i];
 
-		//     console.log(col.green("Building page:"),col.yellowBright('/'+v.path));
-		//     var str = ejs.renderFile(v.data,{
-		//     	data: {
-		// 	    	...protests,
-		// 	        page:v
-		// 	    }
-		//     },function(err,str){
-		//     	if(err){
-		//     		error = err;
-		//     		console.log(col.bgRed('Fatal Error'));
-		//     		console.log(col.red(err));
-		//     	}
-		//     	fs.writeFileSync('dist/'+v.path+'/index.html',str);
-		//     });
-		// });
+		    	for(var o in region.locations){
+		    		var loc = region.locations[o];
 
-		resolve();
-	});
-};
+		    		var path = (loc.path != null?loc.path:region.country_code+'/'+o)
 
-build_pages();
-const watcher = chokidar.watch(glob.sync('{src}/**')).on('change',path => {
+			        var dirs = path.split('/');
+					var dirstr = '';
+
+					for(var i in dirs){
+						dirstr += dirs[i]+'/';
+						if(dirstr && !fs.existsSync('dist/'+dirstr)){
+						    fs.mkdirSync('dist/'+dirstr);
+						}
+					}
+
+					((path,loc)=>{
+						console.log(col.green("Building page:"),col.yellowBright('/'+path));
+					    var str = ejs.renderFile('./src/templates/'+loc.template,{
+					    	data: {
+						        ...loc
+						    }
+					    },function(err,str){
+					    	if(err){
+					    		error = err;
+					    		console.log(col.bgRed('Fatal Error'));
+					    		console.log(col.red(err));
+					    	}
+					    	fs.writeFileSync('dist/'+path+'/index.html',str);
+					    });
+					})(path,loc);
+		    	};
+		    };
+
+			// var error = '';
+			// protests.forEach(async (v, i) => {
+			// 	if(error)return;
+
+			//     console.log(col.green("Building page:"),col.yellowBright('/'+v.path));
+			//     var str = ejs.renderFile(v.data,{
+			//     	data: {
+			// 	    	...protests,
+			// 	        page:v
+			// 	    }
+			//     },function(err,str){
+			//     	if(err){
+			//     		error = err;
+			//     		console.log(col.bgRed('Fatal Error'));
+			//     		console.log(col.red(err));
+			//     	}
+			//     	fs.writeFileSync('dist/'+v.path+'/index.html',str);
+			//     });
+			// });
+
+			resolve();
+		});
+	};
+
 	build_pages();
-});
+	const watcher = chokidar.watch(glob.sync('{src}/**')).on('change',path => {
+		build_pages();
+	});
 
-app.use('/', express.static(path.join(__dirname, 'dist')));
+	app.use('/', express.static(path.join(__dirname, 'dist')));
 
-app.listen(process.env.PORT || 3000);
-console.log(col.bgCyan("Listening on port: " + 3000));
-console.log("Ready for changes");
+	app.listen(process.env.PORT || 3000);
+	console.log(col.bgCyan("Listening on port: " + 3000));
+	console.log("Ready for changes");
 
+})();
