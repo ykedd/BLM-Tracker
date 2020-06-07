@@ -18,6 +18,8 @@ var protests = require('./protests.js').protests;
 // const env = require('./env.json'); // Don't edit this without talking to DCON it could break things in production
 
 protests.pages = {
+	display_name:'Pages',
+	pre_region_type:'page',
 	locations:{
 	    home:{display_name:'Home',path:'',template:'index.ejs'},
 	    safety:{display_name:'Safety',path:'safety',template:'safety.ejs'},
@@ -91,6 +93,7 @@ var task = args[0];
 						console.log(col.green("Building page:"),col.yellowBright('/'+path));
 					    var str = ejs.renderFile('./src/templates/'+loc.template,{
 					    	data: {
+					    		protests,
 						        ...loc
 						    }
 					    },function(err,str){
@@ -100,6 +103,7 @@ var task = args[0];
 					    		console.log(col.red(err));
 					    	}
 					    	fs.writeFileSync('dist/'+path+'/index.html',str);
+					    	if(loc.legacy)fs.writeFileSync('dist/'+loc.legacy,str);
 					    });
 					})(path,loc);
 		    	};
@@ -130,7 +134,7 @@ var task = args[0];
 	};
 
 	build_pages();
-	const watcher = chokidar.watch(glob.sync('{src}/**')).on('change',path => {
+	const watcher = chokidar.watch(glob.sync('src/**')).on('change',path => {
 		build_pages();
 	});
 
