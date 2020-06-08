@@ -23,11 +23,11 @@ protests.pages = {
 	display_name:'Pages',
 	pre_region_type:'page',
 	locations:{
-	    home:{display_name:'Home',path:'',template:'index.ejs'},
-	    safety:{display_name:'Safety',path:'safety',template:'safety.ejs'},
-	    petitions:{display_name:'Petitions',path:'petitions',template:'petitions.ejs'},
-	    education:{display_name:'Education',path:'education',template:'education.ejs'},
-	    team:{display_name:'Team',path:'team',template:'team.ejs'},
+	    home:{display_name:'Home',path:'',template:'index.ejs',legacy:'Home.html'},
+	    safety:{display_name:'Safety',path:'safety',template:'safety.ejs',legacy:'Safety.html'},
+	    petitions:{display_name:'Petitions',path:'petitions',template:'petitions.ejs',legacy:'Petitions.html'},
+	    education:{display_name:'Education',path:'education',template:'education.ejs',legacy:'Education.html'},
+	    team:{display_name:'Team',path:'team',template:'team.ejs',legacy:'Team.html'},
 	}
 };
 
