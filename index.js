@@ -8,14 +8,16 @@ const app = express();
 const ejs = require('ejs');
 const moment = require('moment');
 const cron = require("node-cron");
-// const kv = require('./local_modules/cloudflare-workers-kv');
+const kv = require('./local_modules/cloudflare-workers-kv');
 const chokidar = require('chokidar');
 const fetch = require('node-fetch');
 const async = require('async');
 const col = require('chalk');
 const figlet = require('figlet');
 var protests = require('./protests.js').protests;
-// const env = require('./env.json'); // Don't edit this without talking to DCON it could break things in production
+const env = require('./env.json'); // Don't edit this without talking to DCON it could break things in production
+
+const cloudflare = require('cloudflare')(env.cloudflare.credentials);
 
 protests.pages = {
 	display_name:'Pages',
@@ -31,6 +33,8 @@ protests.pages = {
 
 var args = process.argv.splice(2);
 var task = args[0];
+
+var isFile = n => n.split('/').pop().indexOf('.') > -1;
 
 (async () => {
 	await new Promise(cb => {
@@ -109,39 +113,86 @@ var task = args[0];
 		    	};
 		    };
 
-			// var error = '';
-			// protests.forEach(async (v, i) => {
-			// 	if(error)return;
-
-			//     console.log(col.green("Building page:"),col.yellowBright('/'+v.path));
-			//     var str = ejs.renderFile(v.data,{
-			//     	data: {
-			// 	    	...protests,
-			// 	        page:v
-			// 	    }
-			//     },function(err,str){
-			//     	if(err){
-			//     		error = err;
-			//     		console.log(col.bgRed('Fatal Error'));
-			//     		console.log(col.red(err));
-			//     	}
-			//     	fs.writeFileSync('dist/'+v.path+'/index.html',str);
-			//     });
-			// });
-
 			resolve();
 		});
 	};
 
-	build_pages();
-	const watcher = chokidar.watch(glob.sync('src/**')).on('change',path => {
-		build_pages();
-	});
+	var cf_deploy = function() {
+		return new Promise(async function(resolve,reject) {
+			kv.init({
+		        variableBinding: 'PROTESTS',
+		        namespaceId: '259c3519e36c49c0804999b97b561c00',
+		        accountId: '1a6af0b6e82a5f22b0a4d0ebf98fcfa1',
+		        blockSize: 10000000,
+		        ...env.cloudflare.credentials
+		    });
 
-	app.use('/', express.static(path.join(__dirname, 'dist')));
+		    var files = glob.sync('dist/**');
 
-	app.listen(process.env.PORT || 3000);
-	console.log(col.bgCyan("Listening on port: " + 3000));
-	console.log("Ready for changes");
+		    files = files.filter(v => isFile(v));
+		    files = files.map(v => v.split('/').slice(1).join('/'));
+
+		    console.log(col.bgCyan('Cloudflare Upload'));
+		    for(var i in files){
+		    	console.log(col.green('Uploading:'),col.yellowBright(files[i]));
+		    }
+
+			await new Promise(function(res,rej) {
+				var queue = async.queue(async function(file, cb){
+		    		try {
+		    			var value = fs.readFileSync('dist/'+file);
+		    			value = new Uint8Array(value);
+		    			await kv.put(file, value);
+		    			console.log(col.green('Upload Complete:'),col.yellowBright(file));
+			        }
+			        catch (ex) {
+		    			console.log(col.red('Upload Failed:'),col.yellowBright(file),ex);
+			        }
+				}, 10);
+
+				queue.drain(function(data) {
+					res('done');
+					queue.kill();
+				});
+
+				queue.push(files);
+			});
+
+			await new Promise(async function(res,rej){
+				console.log(col.green('Starting KV Sync Timeout'));
+				setTimeout(()=>{
+					cloudflare.zones.purgeCache(env.cloudflare.credentials.zone_id,{purge_everything:true}).then(function (data) {
+						console.log(col.green('Cloudflare Successfully Purged'),data);
+					  	res();
+					},function (error) {
+						console.log(col.red('Cloudflare Failed to Purge'),error);
+						rej();
+					});
+				},5000);
+			});
+
+			console.log(col.green('Cloudflare Upload Complete'));
+			resolve();
+		});
+	};
+
+	await build_pages();
+
+	switch(task){
+		case 'deploy':
+			await cf_deploy();
+		break;
+		default:
+			const watcher = chokidar.watch(glob.sync('src/**')).on('change',path => {
+				build_pages();
+			});
+
+			app.use('/', express.static(path.join(__dirname, 'dist')));
+
+			app.listen(process.env.PORT || 3000);
+			console.log(col.bgCyan("Listening on port: " + 3000));
+			console.log("Ready for changes");
+		break;
+	}
 
 })();

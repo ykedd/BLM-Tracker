@@ -144,13 +144,6 @@ exports.protests = {
 				template:'unitedstates/states/maryland.ejs',
 				parts:[]
 			},
-			maryland:{
-				display_name:'Maryland',
-				legacy:'Maryland.html', // Supporting avis shit initial code /sigh
-				img:'test',
-				template:'unitedstates/states/maryland.ejs',
-				parts:[]
-			},
 			massachusetts:{
 				display_name:'Massachusetts',
 				legacy:'Massachusetts.html', // Supporting avis shit initial code /sigh
